@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: datasets-api
+  datasource:
+    url: jdbc:postgresql://localhost:5432/datasets
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:4c257b5768be4a5ea40e6f071cf42b6c}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+# Server Configuration
+server:
+  port: 8080
+
+# Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
+
+# API Documentation
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html 
