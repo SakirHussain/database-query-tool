@@ -29,7 +29,6 @@
 	<properties>
 		<java.version>21</java.version>
 		<springdoc.version>2.2.0</springdoc.version>
-		<spotless.version>2.43.0</spotless.version>
 		<jacoco.version>0.8.11</jacoco.version>
 	</properties>
 	<dependencies>
@@ -80,32 +79,6 @@
 						<goals>
 							<goal>repackage</goal>
 						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<!-- Spotless Maven Plugin for Code Formatting -->
-			<plugin>
-				<groupId>com.diffplug.spotless</groupId>
-				<artifactId>spotless-maven-plugin</artifactId>
-				<version>${spotless.version}</version>
-				<configuration>
-					<java>
-						<googleJavaFormat>
-							<version>1.19.2</version>
-							<style>GOOGLE</style>
-						</googleJavaFormat>
-						<removeUnusedImports/>
-						<trimTrailingWhitespace/>
-						<endWithNewline/>
-					</java>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>check</goal>
-						</goals>
-						<phase>validate</phase>
 					</execution>
 				</executions>
 			</plugin>

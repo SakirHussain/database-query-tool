@@ -64,14 +64,7 @@ The application will start on `http://localhost:8080`
 # View report at target/site/jacoco/index.html
 ```
 
-### Code Formatting
-```bash
-# Check formatting
-./mvnw spotless:check
 
-# Apply formatting
-./mvnw spotless:apply
-```
 
 ### Package
 ```bash
@@ -114,7 +107,6 @@ datasets-api/
 ## Maven Plugins
 
 - **Spring Boot Plugin**: Application packaging and running
-- **Spotless Plugin**: Code formatting with Google Java Format
 - **JaCoCo Plugin**: Code coverage reporting
 
 ## Database Connection
