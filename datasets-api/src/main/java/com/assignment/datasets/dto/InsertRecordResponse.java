@@ -8,17 +8,14 @@ public class InsertRecordResponse {
     private String dataset;
     private String message;
 
-    // Default constructor
     public InsertRecordResponse() {}
 
-    // Constructor with parameters
     public InsertRecordResponse(Long recordId, String dataset, String message) {
         this.recordId = recordId;
         this.dataset = dataset;
         this.message = message;
     }
 
-    // Getters
     public Long getRecordId() {
         return recordId;
     }
@@ -31,7 +28,6 @@ public class InsertRecordResponse {
         return message;
     }
 
-    // Setters
     public void setRecordId(Long recordId) {
         this.recordId = recordId;
     }
@@ -44,7 +40,6 @@ public class InsertRecordResponse {
         this.message = message;
     }
 
-    // equals method
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -55,13 +50,11 @@ public class InsertRecordResponse {
                 && Objects.equals(message, that.message);
     }
 
-    // hashCode method
     @Override
     public int hashCode() {
         return Objects.hash(recordId, dataset, message);
     }
 
-    // toString method
     @Override
     public String toString() {
         return "InsertRecordResponse{"

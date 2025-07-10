@@ -114,3 +114,6 @@ datasets-api/
 Connection string: `jdbc:postgresql://localhost:5432/datasets`
 
 Ensure PostgreSQL is running before starting the application. 
+
+
+ Start-Service postgresql-x64-16

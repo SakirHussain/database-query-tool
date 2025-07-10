@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 @Repository
 public class RecordQueryRepositoryImpl implements RecordQueryRepository {
 
+    // for custom sql queries
     @PersistenceContext
     private EntityManager entityManager;
     

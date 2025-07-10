@@ -43,39 +43,34 @@ public class DatasetServiceImpl implements DatasetService {
                               Optional<String> sortBy,
                               Optional<Sort.Direction> order) {
         
-        // Validate input: if order is present, sortBy must also be present
+        // order cannot be present without sortBy
         if (order.isPresent() && sortBy.isEmpty()) {
             throw new BadRequestException("Sort direction specified but no sort field provided. " +
                 "Please provide a sortBy parameter when specifying order.");
         }
 
-        // Determine sort direction (default to ASC if not specified)
         Sort.Direction sortDirection = order.orElse(Sort.Direction.ASC);
 
-        // Switch logic for 4 scenarios
+        // four possible scenarios
         if (groupBy.isPresent() && sortBy.isPresent()) {
-            // Scenario 1: Both groupBy and sortBy - group and sort
             Map<String, List<JsonNode>> groupedRecords = recordQueryRepository.groupAndSort(
                 dataset, groupBy.get(), sortBy.get(), sortDirection
             );
             return QueryResponse.grouped(groupedRecords);
 
         } else if (groupBy.isPresent()) {
-            // Scenario 2: Only groupBy - group without sorting
             Map<String, List<JsonNode>> groupedRecords = recordQueryRepository.groupAndSort(
                 dataset, groupBy.get(), null, sortDirection
             );
             return QueryResponse.grouped(groupedRecords);
 
         } else if (sortBy.isPresent()) {
-            // Scenario 3: Only sortBy - sort without grouping
             List<JsonNode> sortedRecords = recordQueryRepository.sortOnly(
                 dataset, sortBy.get(), sortDirection
             );
             return QueryResponse.sorted(sortedRecords);
 
         } else {
-            // Scenario 4: Neither groupBy nor sortBy - return all records unsorted
             List<RecordEntity> allRecords = recordRepository.findByDatasetName(dataset);
             List<JsonNode> payloads = allRecords.stream()
                 .map(RecordEntity::getPayload)

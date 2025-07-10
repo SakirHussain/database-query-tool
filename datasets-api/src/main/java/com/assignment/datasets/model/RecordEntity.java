@@ -26,16 +26,14 @@ public class RecordEntity {
   @JdbcTypeCode(SqlTypes.JSON)
   private JsonNode payload;
 
-  // Default constructor
   public RecordEntity() {}
 
-  // Constructor with parameters
   public RecordEntity(String datasetName, JsonNode payload) {
     this.datasetName = datasetName;
     this.payload = payload;
   }
 
-  // Getters
+  // get
   public Long getId() {
     return id;
   }
@@ -48,7 +46,7 @@ public class RecordEntity {
     return payload;
   }
 
-  // Setters
+  // set
   public void setId(Long id) {
     this.id = id;
   }

@@ -15,11 +15,9 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
 
-# Server Configuration
 server:
   port: 8080
 
-# Actuator Configuration
 management:
   endpoints:
     web:
